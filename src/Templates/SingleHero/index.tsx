@@ -23,15 +23,12 @@ interface Hero {
   };
 }
 
-const token = 'feb88b10b6a916f1c2cb8a3e3f608f31'
-
 function SingleHero() {
   const { id } = useParams();
   const [hero, setHero] = useState<Hero | null>(null);
 
   useEffect(() => {
-    const url =
-      'https://gateway.marvel.com:443/v1/public/characters/' + id + '?apikey=' + token;
+    const url = process.env.REACT_APP_API + '/' + id + '?apikey=' + process.env.REACT_APP_TOKEN;
     axios.get(url).then((response) => {
       setHero(response.data.data.results[0]);
     });

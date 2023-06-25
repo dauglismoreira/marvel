@@ -14,8 +14,6 @@ interface Hero {
   };
 }
 
-const token = 'feb88b10b6a916f1c2cb8a3e3f608f31'
-
 function App() {
 
   const [heroList, setHeroList] = useState<Hero[]>([]);
@@ -28,7 +26,7 @@ function App() {
     }
     setTimeout(() => {
       if(searchTerm.length > 1){
-        const url = 'https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=' + searchTerm + '&orderBy=name&apikey=' + token
+        const url = "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=" + searchTerm + '&orderBy=name&apikey=' + process.env.REACT_APP_TOKEN
         axios.get(url)
         .then(response => {
             const heroes = response.data?.data?.results ?? [];
