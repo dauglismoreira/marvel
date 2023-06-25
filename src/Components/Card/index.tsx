@@ -23,14 +23,12 @@ interface CardProps {
       };
   }
 
-const token = 'feb88b10b6a916f1c2cb8a3e3f608f31'
-
 export const Card = ({ title, route }: CardProps) => {
 
     const [info, setInfo] = useState<Info[]>([]);
 
     useEffect(() => {
-        const url = route + '?apikey=' + token;
+        const url = route + '?apikey=' + process.env.REACT_APP_TOKEN;
         axios.get(url).then((response) => {
             setInfo(response.data.data.results);
         });

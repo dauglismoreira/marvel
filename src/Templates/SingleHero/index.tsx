@@ -28,7 +28,7 @@ function SingleHero() {
   const [hero, setHero] = useState<Hero | null>(null);
 
   useEffect(() => {
-    const url = process.env.REACT_APP_API + '/' + id + '?apikey=' + process.env.REACT_APP_TOKEN;
+    const url = 'https://gateway.marvel.com:443/v1/public/characters/' + id + '?apikey=' + process.env.REACT_APP_TOKEN;
     axios.get(url).then((response) => {
       setHero(response.data.data.results[0]);
     });
