@@ -89,7 +89,7 @@ const Div = styled.div`
     transform: translate(0, -50%);
   }
   &.has-results header {
-    transform: translate(0, -110%);
+    transform: translate(0, -50vh);
   }
 
   body {
